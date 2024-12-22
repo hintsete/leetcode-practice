@@ -1,17 +1,24 @@
 class Solution:
     def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
-        size=len(heights)
-        for i in range(1,size):
-            key_height=heights[i]
-            key_name=names[i]
-            j=i-1
+        max_number=max(heights)
+        count=[0]*(max_number+1)
+        height_to_names={}
+        # populating the count array and the height_to_names dctionary
+        for height,name in zip(heights,names):
+            count[height]+=1
+            if height not in height_to_names:
+                height_to_names[height]=[]
 
-            while j>=0 and key_height>heights[j]:
-                heights[j+1]=heights[j]
-                names[j+1]=names[j]
-                j-=1
-            heights[j+1]=key_height
-            names[j+1]=key_name
-        return names
+            height_to_names[height].append(name)
+        # Rearragneging
+
+        sorted_array=[]
+        for height in range(max_number,-1,-1):
+            if count[height]>0:
+                sorted_array.extend(height_to_names[height])
+
             
+        return sorted_array
+
+        
         
