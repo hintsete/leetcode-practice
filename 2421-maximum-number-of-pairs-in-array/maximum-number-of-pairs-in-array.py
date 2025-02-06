@@ -4,8 +4,8 @@ class Solution:
         n=len(nums)
         c=0
         for val in count.values():
-            while val>1:
-                val-=2
-                c+=1
+            if val>1:
+                p=val//2
+                c+=p
         return [c,n-(2*c)]
         
