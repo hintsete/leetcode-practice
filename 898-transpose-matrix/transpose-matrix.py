@@ -11,4 +11,6 @@ class Solution:
         #     output.append(new_arr)
 
         # return output
+        # matrix=list(zip(*matrix))
+        # return matrix
      
