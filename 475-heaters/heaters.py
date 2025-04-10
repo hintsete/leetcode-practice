@@ -10,7 +10,7 @@ class Solution:
             while l<r:
                 mid=(l+r)//2
                 
-                if heaters[mid]<house:
+                if heaters[mid]<=house:
                     l=mid+1
 
                 else:
