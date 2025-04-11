@@ -17,16 +17,17 @@ class Solution:
                         dfs(visited,new_r,new_c)
                 else:
                     perimeter+=1
+            return perimeter
             
 
                 
         for r in range(len(grid)):
             for c in range(len(grid[0])):
                 if grid[r][c] and (r,c) not in visited:
-                    dfs(visited,r,c)
-                    return perimeter
+                    return dfs(visited,r,c)
+                    # return perimeter
                 
-        return perimeter
+        # return perimeter
 
 
             
