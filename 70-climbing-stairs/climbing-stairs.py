@@ -1,19 +1,11 @@
 class Solution:
-    def climbStairs(self, n: int) -> int:
-        memo={}
-        def helper(x):
-            if x==1:
-                return 1
+    def climbStairs(self, n: int,memo=None) -> int:
+        if memo==None:
+            memo={1:1,2:2}
 
-            elif x==2:
-                return 2
+        if n in memo:
+            return memo[n]
 
-            # return helper(x-1)+helper(x-2)
-            if x in memo:
-                return memo[x]
-
-            memo[x]=helper(x-1)+helper(x-2)
-            return memo[x]
-
-        return helper(n)
+        memo[n]=self.climbStairs(n-1,memo)+self.climbStairs(n-2,memo)
+        return memo[n]
         
