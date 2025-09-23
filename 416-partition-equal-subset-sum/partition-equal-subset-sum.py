@@ -1,29 +1,21 @@
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
-        total_sum = sum(nums)
-       
-        if total_sum % 2 != 0:
+        total=sum(nums)
+        target=total//2
+        memo={}
+        if total%2!=0:
             return False
-        
-        target = total_sum // 2
-        memo = {}
-        
-        def dp(i, target):
-          
-            if target == 0:
+        def dp(target,i):
+            if target==0:
                 return True
-            if i >= len(nums) or target < 0:
+
+            if target<0 or i>=len(nums):
                 return False
-            
-         
-            if (i, target) in memo:
-                return memo[i, target]
-            
-           
-            memo[i, target] = dp(i+1, target - nums[i]) or dp(i+1, target)
-            return memo[i, target]
-        
-        return dp(0, target)
+            if(target,i) in memo:
+                return memo[(target,i)]
+            memo[(target,i)]=dp(target-nums[i],i+1) or dp(target,i+1)
+            return memo[target,i]
+        return dp(target,0)
 
             
         
