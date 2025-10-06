@@ -4,11 +4,16 @@ class Solution:
         for num in arr:
             freq[num%k]+=1
 
-        for i in range(1,k):
-            if i== k-i and freq[i] & 1:
-                return False
-            if freq[i] != freq[k-i]:
-                return False
+        if freq[0] %2 !=0:
+            return False
 
+        for i in range(1,(k//2)+1):
+            if i==k-1:
+                if freq[i] %2 !=0:
+                    return False
+
+            else:
+                if freq[i]!=freq[k-i]:
+                    return False
+                    
         return True
-       
