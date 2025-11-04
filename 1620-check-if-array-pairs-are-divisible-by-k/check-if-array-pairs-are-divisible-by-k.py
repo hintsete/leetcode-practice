@@ -8,7 +8,7 @@ class Solution:
             return False
 
         for i in range(1,(k//2)+1):
-            if i==k-1:
+            if i==k-i:
                 if freq[i] %2 !=0:
                     return False
 
